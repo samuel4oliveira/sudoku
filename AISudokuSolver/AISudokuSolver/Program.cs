@@ -7,11 +7,23 @@ namespace AISudokuSolver
         static void Main(string[] args)
         {
 
-            int[,] matrix = new int[9, 9];
+            int[,] matrix = new int[,] { { 0, 0, 0, 0, 0, 0, 2, 0, 0},
+                                         { 0, 8, 0, 0, 0, 7, 0, 9, 0},
+                                         { 6, 0, 2, 0, 0, 0, 5, 0, 0},
+
+                                         { 0, 7, 0, 0, 6, 0, 0, 0, 0},
+                                         { 0, 0, 0, 9, 0, 1, 0, 0, 0},
+                                         { 0, 0, 0, 0, 2, 0, 0, 4, 0},
+
+                                         { 0, 0, 5, 0, 0, 0, 6, 0, 3},
+                                         { 0, 9, 0, 4, 0, 0, 0, 7, 0},
+                                         { 0, 0, 6, 0, 0, 0, 0, 0, 0}};
+
             int i;
             int j;
 
            //#iniciar array com 0
+           /*
             for (i = 0; i < 9; i++)
             {
                 for (j = 0;j < 9; j++)
@@ -19,7 +31,7 @@ namespace AISudokuSolver
                     matrix[i,j] = 0;
                 }
             }
-
+            */
 
             int rowLength = matrix.GetLength(0);
             int colLength = matrix.GetLength(1);
@@ -27,7 +39,7 @@ namespace AISudokuSolver
             int countPrintLinha = 0;
             //Printar array
 
-            Console.Write("*-------+-------+-------*");
+            Console.Write("+-------+-------+-------+");
             Console.Write("\n| ");
             for (i = 0; i < rowLength; i++)
             {
@@ -43,10 +55,11 @@ namespace AISudokuSolver
                     countPrintColuna++;
                 }
                 countPrintLinha++;
+                Console.Write("|");
                 if (countPrintLinha == 3)
                 {
                     Console.Write("\n");
-                    Console.Write("*-------+-------+-------*");
+                    Console.Write("+-------+-------+-------+");
                     countPrintLinha = 0;
                 }
                 Console.Write("\n");
