@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\moacy\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\moacy\\.nuget\\packages"
+    ]
+  }
+}
