@@ -1,22 +1,15 @@
-path = "/home/samuel/Documents/ufmt/sudoku/sudoku.txt"
-arquivo = open(path).read()
+PATH = "sudoku.txt"
+file = open(PATH).read()
 
-aux = []
-sudoku = []
-for i in range(0, len(arquivo)):
-    aux.append(int(arquivo[i]))
-    if len(aux) == 9:
-        sudoku.append(aux)
-        aux = []
+sudoku = [[int(char) for char in file[i:i+9]] for i in range(0,len(file), 9)]
 
-def possible(y, x, n):
+def is_possible(y, x, n):
     global sudoku
-    for i in range(0, 9):
-        if sudoku[y][i] == n:
-            return False
-    for i in range(0, 9):
-        if sudoku[i][x] == n:
-            return False
+
+    # verificamos se n nao esta na linha ou na coluna especificada
+    if n in sudoku[y] or n in [row[x] for row in sudoku]:
+        return False
+
     x0 = (x//3)*3
     y0 = (y//3)*3
     for i in range(0, 3):
@@ -27,15 +20,17 @@ def possible(y, x, n):
 
 def solve():
     global sudoku
+
     for y in range(9):
         for x in range(9):
             if sudoku[y][x] == 0:
                 for n in range(1, 10):
-                    if possible(y, x, n):
+                    if is_possible(y, x, n):
                         sudoku[y][x] = n
                         solve()
                         sudoku[y][x] = 0
-                return     
+                return
+                
     print(sudoku)
 
 solve()
